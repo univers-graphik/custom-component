@@ -16,7 +16,6 @@ body {
     color: Black;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
 }
 
 .titleType1 {
@@ -42,20 +41,6 @@ body {
         text-align: center;
         font-size: 40px;
     }
-}
-
-.imageType1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    opacity: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: opacity 1s ease-in-out;
 }
 
 
