@@ -1,0 +1,18 @@
+# Project
+.env
+web/.sass-cache/**
+web/js/node_modules
+web/js/dist
+
+# PHPStorm
+.idea/**
+
+# Composer
+composer.lock
+
+# Map generate by sass
+web/css/*.map
+
+# NPM
+npm-debug.log
+package-lock.json
