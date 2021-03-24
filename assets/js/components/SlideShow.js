@@ -2,7 +2,7 @@ export default class SlideShow extends HTMLElement {
   constructor () {
     super()
     this.duration = parseInt(this.getAttribute('duration'), 10) || 2000
-    this.items = this.hasAttribute('items') ? this.getAttribute('items').split(', ') : []
+    this.items = this.hasAttribute('items') ? this.getAttribute('items').replace(/\s/g, '').split(/,(?!\\s)/) : []
 
     this.shadow = this.attachShadow({ mode: 'closed' })
     this.shadow.innerHTML = this.getItems()
@@ -12,6 +12,12 @@ export default class SlideShow extends HTMLElement {
   getStyle () {
     const style = document.createElement('style')
     style.textContent = `
+    :host {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: relative;
+    }
     .item {
       position: absolute;
       top: 0;
@@ -32,12 +38,7 @@ export default class SlideShow extends HTMLElement {
   getItems () {
     if (!this.items.length) return
 
-    let content = ''
-    this.items.forEach((element) => {
-      content += `<div class="jsItem item" style="background-image: url('${element}')"></div>`
-    })
-
-    return content
+    return this.items.map((element) => `<div class="jsItem item" style="background-image: url('${element}')"></div>`).join('')
   }
 
   connectedCallback () {
@@ -46,10 +47,8 @@ export default class SlideShow extends HTMLElement {
     const items = this.shadow.querySelectorAll('.jsItem')
     let slideIndex = 0
     const automaticSlideShow = () => {
-      for (let i = 0; i < items.length; i++) {
-        (item => {
-          item.style.opacity = '0'
-        })(items[i])
+      for (const item of items) {
+        item.style.opacity = '0'
       }
       slideIndex++
       // Reinit index

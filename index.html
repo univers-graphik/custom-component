@@ -15,7 +15,13 @@
 <body>
     <h1 class="titleType1">Web Component</h1>
 
-    <slide-show duration="4000" items="assets/images/background-1.jpg, assets/images/background-2.jpg, assets/images/background-3.jpg, assets/images/background-4.jpg, assets/images/background-5.jpg, assets/images/background-6.jpg"/>
+    <div class="slideShowContainer">
+        <slide-show duration="4000" items="assets/images/background-1.jpg, assets/images/background-2.jpg, assets/images/background-3.jpg, assets/images/background-4.jpg, assets/images/background-5.jpg, assets/images/background-6.jpg"></slide-show>
+    </div>
+
+    <div class="slideShowContainerType2">
+        <slide-show duration="6000" items="https://picsum.photos/250/250, https://picsum.photos/300/300, https://picsum.photos/350/350"></slide-show>
+    </div>
 
     <script src="./assets/js/main.js" type="module"></script>
 </body>
